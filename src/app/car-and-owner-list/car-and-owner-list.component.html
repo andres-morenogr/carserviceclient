@@ -1,1 +1,17 @@
-<p>car-and-owner-list works!</p>
+<mat-card>
+  <mat-card-title>Car List</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let car of cars">
+        <img mat-list-avatar src="{{car.giphyUrl}}" alt="{{car.name}}">
+        <h3 mat-line>
+          <a mat-button>{{car.name}}</a>
+          <p *ngIf="car.ownerName">With owner: {{car.ownerName}} with dni {{car.ownerDni}} and profession {{car.ownerProfession}}</p>
+        </h3>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+
+  <button mat-fab color="primary" [routerLink]="['/car-add']">Add Car</button>
+  <button mat-fab color="primary" [routerLink]="['/owner-add']">Add Owner</button>
+</mat-card>
