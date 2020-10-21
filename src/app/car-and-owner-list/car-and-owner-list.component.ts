@@ -21,9 +21,11 @@ export class CarAndOwnerListComponent implements OnInit {
         this.giphyService.get(car.name).subscribe(url => car.giphyUrl = url);
         if (car.ownerDni) {
           this.ownerService.getByDni(car.ownerDni).subscribe((data) => {
-            this.owner = data;
-            car.ownerName = this.owner.name;
-            car.ownerProfession = this.owner.profession;
+            this.owner = data[0];
+            if(this.owner) {
+              car.ownerName = this.owner.name;
+              car.ownerProfession = this.owner.profession;
+            }
           });
         }
       }

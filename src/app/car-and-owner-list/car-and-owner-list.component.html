@@ -1,17 +1,25 @@
 <mat-card>
-  <mat-card-title>Car List</mat-card-title>
+  <mat-card-title>Car with Owner List</mat-card-title>
   <mat-card-content>
     <mat-list>
-      <mat-list-item *ngFor="let car of cars">
-        <img mat-list-avatar src="{{car.giphyUrl}}" alt="{{car.name}}">
-        <h3 mat-line>
-          <a mat-button>{{car.name}}</a>
-          <p *ngIf="car.ownerName">With owner: {{car.ownerName}} with dni {{car.ownerDni}} and profession {{car.ownerProfession}}</p>
-        </h3>
-      </mat-list-item>
+      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap="">
+        <mat-list-item *ngFor="let car of cars">
+          <img mat-list-avatar src="{{car.giphyUrl}}" alt="{{car.name}}">
+          <h3 mat-line>
+            <a md-button class="md-raised">{{car.name}}
+            </a>
+          </h3>
+          <div mat-line>
+            <p *ngIf="car.ownerName">With owner: {{car.ownerName}} with dni {{car.ownerDni}} and profession
+              {{car.ownerProfession}}</p>
+            <p *ngIf="car.ownerDni && !car.ownerName">With owner dni: {{car.ownerDni}}</p>
+            <p *ngIf="!car.ownerDni && !car.ownerName">With no owner</p>
+          </div>
+        </mat-list-item>
+      </section>
     </mat-list>
   </mat-card-content>
 
-  <button mat-fab color="primary" [routerLink]="['/car-add']">Add Car</button>
-  <button mat-fab color="primary" [routerLink]="['/owner-add']">Add Owner</button>
+  <button mat-raised-button color="primary" [routerLink]="['/car-add']">Add Car</button>
+  <button mat-raised-button color="warn" [routerLink]="['/owner-add']">Add Owner</button>
 </mat-card>

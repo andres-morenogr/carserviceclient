@@ -5,11 +5,11 @@
       <mat-list-item *ngFor="let owner of owners">
         <mat-checkbox (change)="setOwnerToDelete($event.checked, owner)"></mat-checkbox>
         <p class="text">Owner: {{owner.name}}, with dni {{owner.dni}} and profession {{owner.profession}}</p>
-        <a mat-button [routerLink]="['/owner-edit', owner.id]">Edit</a>
+        <a mat-raised-button color="primary" [routerLink]="['/owner-edit', owner.id]">Edit</a>
       </mat-list-item>
     </mat-list>
   </mat-card-content>
 
-  <button mat-fab color="primary" [routerLink]="['/owner-add']">Add</button>
-  <button mat-fab color="warn" (click) = "deleteSelectedOwners()">Delete</button>
+  <button mat-raised-button color="primary" [routerLink]="['/owner-add']">Add</button>
+  <button mat-raised-button color="warn" (click) = "deleteSelectedOwners()">Delete</button>
 </mat-card>
